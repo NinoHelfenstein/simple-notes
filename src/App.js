@@ -27,31 +27,23 @@ export default function App() {
   function noteClickHandler(clickedItem) {
     setCurrentNote(clickedItem);
   }
-  const updateHandler = debounce((text, title) => updateNotes(text, title));
-  function debounce(func, timeout = 500) {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        func.apply(this, args);
-      }, timeout);
-    };
-  }
-  function updateNotes(title, text) {
-    let updatedNotes = [...notes];
-    for (let i = 0; i < notes.length; i++) {
-      if (notes[i].id === currentNote.id) {
-        updatedNotes[i].title = title;
-        updatedNotes[i].text = text;
-        setNotes(updatedNotes);
-        break;
-      }
-    }
+  function updateNotes(event) {
+    console.log("updateNotes");
+    const target = event.target.name;
+    const value = event.target.value;
+    const noteIndex = notes.findIndex((n) => n.id === currentNote.id);
+    const updatedNotes = [
+      ...notes.slice(0, noteIndex),
+      { ...notes[noteIndex], [target]: value },
+      ...notes.slice(noteIndex + 1),
+    ];
+
+    setNotes(updatedNotes);
   }
   return (
     <>
       <Sidebar noteClickHandler={noteClickHandler} notes={notes} />
-      <CurrentNote currentNote={currentNote} updateHandler={updateHandler} />
+      <CurrentNote currentNote={currentNote} updateNotes={updateNotes} />
     </>
   );
 }

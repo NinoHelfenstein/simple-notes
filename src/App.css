@@ -141,4 +141,11 @@ body {
     font-family: Inter;
     font-size: 16px;
     line-height: 27px;
+    width: 100%;
+    border: none;
+    outline: none;
+    display: block;
+    overflow: hidden;
+    resize: none;
+    height: 100%;
 }
