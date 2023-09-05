@@ -1,54 +1,59 @@
-import { useEffect } from "react";
-function CurrentNote({ currentNote, updateNotes }) {
-  // function inputHandler(event) {
-  //   console.log(event.target.value);
-  //   // let title = document.querySelector(".currentTitle").innerHTML;
-  //   // let text = document.querySelector(".currentText").innerHTML;
-  //   // updateHandler(title, text);
-  // }
-  useEffect(() => {
-    const textarea = document.getElementById("textArea");
-    const end = textarea.value.length;
-    console.log("useEffect");
-    textarea.style.height = "auto";
-    textarea.style.height = textarea.scrollHeight + "px";
-    textarea.setSelectionRange(end, end);
-  }, []);
+import { useState, useEffect } from "react";
 
-  const inputHandler = debounce((event) => updateNotes(event));
-  function debounce(func, timeout = 500) {
-    let timer;
-    return (...args) => {
+function CurrentNote({ initialCurrentNote, updateNotes }) {
+  const [note, setNote] = useState({});
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      updateNotes(initialCurrentNote.id, note);
+    }, 500);
+
+    return () => {
       clearTimeout(timer);
-      timer = setTimeout(() => {
-        func.apply(this, args);
-      }, timeout);
     };
-  }
-  function autoResize(event) {
-    event.target.style.height = "auto";
-    event.target.style.height = event.target.scrollHeight + "px";
-    console.log(event.target.scrollHeight);
-  }
+  }, [note]);
+  useEffect(() => {
+    console.log("initialCurrentNote");
+    setNote((note) => ({
+      ...note,
+      ...{ title: initialCurrentNote.title, text: initialCurrentNote.text },
+    }));
+  }, [initialCurrentNote]);
   return (
     <div className="currentNote">
-      <input
+      <div
         className="currentTitle"
-        name="title"
-        defaultValue={currentNote.title}
-        onChange={inputHandler}
-      ></input>
-      <div className="currentLastEdited">{currentNote.time}</div>
-      <textarea
+        id="Title"
+        onInput={(e) =>
+          setNote((note) => ({
+            ...note,
+            ...{ title: e.target.innerText },
+          }))
+        }
+        tabIndex={3}
+        contentEditable
+        suppressContentEditableWarning
+      >
+        {initialCurrentNote.title}
+      </div>
+      <div className="currentLastEdited">{initialCurrentNote.time}</div>
+      <div
         className="currentText"
-        name="text"
-        id="textArea"
-        defaultValue={currentNote.text}
-        onChange={inputHandler}
-        onInput={autoResize}
-        autoFocus
-      ></textarea>
+        id="Text"
+        onInput={(e) =>
+          setNote((note) => ({
+            ...note,
+            ...{ text: e.target.innerText },
+          }))
+        }
+        tabIndex={4}
+        contentEditable
+        suppressContentEditableWarning
+      >
+        {initialCurrentNote.text}
+      </div>
     </div>
   );
 }
+
 export default CurrentNote;

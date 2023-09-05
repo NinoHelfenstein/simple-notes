@@ -16,7 +16,7 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("notesStorage", JSON.stringify(notes));
   }, [notes]);
-  const [currentNote, setCurrentNote] = useState(() => {
+  const [initialCurrentNote, setInitialCurrentNote] = useState(() => {
     return notes.reduce((prevNote, currentNote) => {
       if (!prevNote || new Date(currentNote.time) > new Date(prevNote.time)) {
         return currentNote;
@@ -25,25 +25,35 @@ export default function App() {
     }, null);
   });
   function noteClickHandler(clickedItem) {
-    setCurrentNote(clickedItem);
+    setInitialCurrentNote(clickedItem);
+    console.log("noteClickHandler clickedItem:", clickedItem);
   }
-  function updateNotes(event) {
-    console.log("updateNotes");
-    const target = event.target.name;
-    const value = event.target.value;
-    const noteIndex = notes.findIndex((n) => n.id === currentNote.id);
+  function updateNotes(id, note) {
+    if (!note.title && !note.text) {
+      return;
+    }
+    const noteIndex = notes.findIndex((n) => n.id === id);
     const updatedNotes = [
       ...notes.slice(0, noteIndex),
-      { ...notes[noteIndex], [target]: value },
+      { ...notes[noteIndex], title: note.title, text: note.text },
       ...notes.slice(noteIndex + 1),
     ];
-
+    console.log("notes:", notes);
+    console.log("updatedNotes:", updatedNotes);
     setNotes(updatedNotes);
   }
+
   return (
     <>
-      <Sidebar noteClickHandler={noteClickHandler} notes={notes} />
-      <CurrentNote currentNote={currentNote} updateNotes={updateNotes} />
+      <Sidebar
+        noteClickHandler={noteClickHandler}
+        notes={notes}
+        // newNoteHandler={newNoteHandler}
+      />
+      <CurrentNote
+        initialCurrentNote={initialCurrentNote}
+        updateNotes={updateNotes}
+      />
     </>
   );
 }
