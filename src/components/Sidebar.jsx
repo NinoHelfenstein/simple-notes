@@ -7,11 +7,13 @@ function Sidebar({ noteClickHandler, notes, newNoteHandler }) {
     console.log("onSearch(search) search:", e.target.value);
     setQuery(e.target.value);
   }
+
   return (
     <div className="sidebar">
       <Header onSearch={onSearch} newNoteHandler={newNoteHandler} />
       <div className="notesListWrapper">
-        {notes
+        {[...notes]
+          .sort((a, b) => b.lastEdited - a.lastEdited)
           .filter((item) => {
             return item.title.toLowerCase().includes(query.toLowerCase());
           })

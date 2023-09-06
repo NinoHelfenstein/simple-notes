@@ -1,56 +1,56 @@
 [
   {
-    "id": "1690188236574",
+    "id": 1672567369000,
     "title": "Light & Bright in Brooklyn",
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui.",
-    "time": "Feb 8, 2023"
+    "lastEdited": 1672567369000
   },
   {
-    "id": "1690188233458",
+    "id": 1675245769000,
     "title": "Another cool note",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum! Provident similique",
-    "time": "Feb 8, 2023"
+    "lastEdited": 1675245769000
   },
   {
-    "id": "16901882363574",
+    "id": 1688202169000,
+    "title": "AI news",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui.",
+    "lastEdited": 1688202169000
+  },
+  {
+    "id": 1677664969000,
     "title": "Meeting notes",
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui.",
-    "time": "Feb 8, 2023"
+    "lastEdited": 1677664969000
   },
   {
-    "id": "1690388233458",
+    "id": 1680339769000,
     "title": "Yep yep yep this is cool",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum! Provident similique",
-    "time": "Feb 8, 2023"
+    "lastEdited": 1680339769000
   },
   {
-    "id": "1691188236574",
+    "id": 1682931769000,
     "title": "AI news",
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui.",
-    "time": "Feb 8, 2023"
+    "lastEdited": 1682931769000
   },
   {
-    "id": "1690188433458",
+    "id": 1685610169000,
     "title": "AI news",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum! Provident similique",
-    "time": "Feb 8, 2023"
+    "lastEdited": 1685610169000
   },
   {
-    "id": "1690188241654",
-    "title": "AI news",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui.",
-    "time": "Feb 8, 2023"
-  },
-  {
-    "id": "1590188233458",
+    "id": 1690880569000,
     "title": "FOX CHANNEL",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum! Provident similique",
-    "time": "Feb 8, 2023"
+    "lastEdited": 1690880569000
   },
   {
-    "id": "1590181233458",
+    "id": 1693558969000,
     "title": "Bucket List",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum! Provident similique",
-    "time": "Feb 8, 2023"
+    "lastEdited": 1693558969000
   }
 ]

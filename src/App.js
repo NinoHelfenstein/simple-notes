@@ -18,7 +18,10 @@ export default function App() {
   }, [notes]);
   const [initialCurrentNote, setInitialCurrentNote] = useState(() => {
     return notes.reduce((prevNote, currentNote) => {
-      if (!prevNote || new Date(currentNote.time) > new Date(prevNote.time)) {
+      if (
+        !prevNote ||
+        new Date(currentNote.lastEdited) > new Date(prevNote.lastEdited)
+      ) {
         return currentNote;
       }
       return prevNote;
@@ -26,7 +29,6 @@ export default function App() {
   });
   function noteClickHandler(clickedItem) {
     setInitialCurrentNote(clickedItem);
-    console.log("noteClickHandler clickedItem:", clickedItem);
   }
   function updateNotes(id, note) {
     if (!note.title && !note.text) {
@@ -38,9 +40,20 @@ export default function App() {
       { ...notes[noteIndex], title: note.title, text: note.text },
       ...notes.slice(noteIndex + 1),
     ];
-    console.log("notes:", notes);
-    console.log("updatedNotes:", updatedNotes);
     setNotes(updatedNotes);
+  }
+
+  function newNoteHandler() {
+    const newNotes = notes;
+    let newNote = {
+      id: new Date().getTime(),
+      title: "Empty Note",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum! Provident similique",
+      lastEdited: new Date().getTime(),
+    };
+    newNotes.push(newNote);
+    setNotes(newNotes);
+    setInitialCurrentNote(newNote);
   }
 
   return (
@@ -48,7 +61,7 @@ export default function App() {
       <Sidebar
         noteClickHandler={noteClickHandler}
         notes={notes}
-        // newNoteHandler={newNoteHandler}
+        newNoteHandler={newNoteHandler}
       />
       <CurrentNote
         initialCurrentNote={initialCurrentNote}

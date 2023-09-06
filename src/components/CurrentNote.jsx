@@ -13,12 +13,17 @@ function CurrentNote({ initialCurrentNote, updateNotes }) {
     };
   }, [note]);
   useEffect(() => {
-    console.log("initialCurrentNote");
     setNote((note) => ({
       ...note,
       ...{ title: initialCurrentNote.title, text: initialCurrentNote.text },
     }));
   }, [initialCurrentNote]);
+  const date = new Date(initialCurrentNote.lastEdited);
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
   return (
     <div className="currentNote">
       <div
@@ -36,7 +41,7 @@ function CurrentNote({ initialCurrentNote, updateNotes }) {
       >
         {initialCurrentNote.title}
       </div>
-      <div className="currentLastEdited">{initialCurrentNote.time}</div>
+      <div className="currentLastEdited">{formattedDate}</div>
       <div
         className="currentText"
         id="Text"
