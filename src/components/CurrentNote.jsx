@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function CurrentNote({ initialCurrentNote, updateNotes }) {
+function CurrentNote({ initialCurrentNote, updateNotes, deleteNoteHandler }) {
   const [note, setNote] = useState({});
 
   useEffect(() => {
@@ -26,6 +26,9 @@ function CurrentNote({ initialCurrentNote, updateNotes }) {
   });
   return (
     <div className="currentNote">
+      <button className="bin" tabIndex={5} onClick={deleteNoteHandler}>
+        <img src="bin.svg" alt="Icon to delete notes" />
+      </button>
       <div
         className="currentTitle"
         id="Title"

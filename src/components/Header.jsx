@@ -23,13 +23,9 @@ function Header({ onSearch, newNoteHandler }) {
           tabIndex={1}
         />
       </div>
-      <img
-        className="newNoteButton"
-        src="new.svg"
-        alt="Create a new Note"
-        onClick={newNoteHandler}
-        tabIndex={2}
-      />
+      <button className="newNoteButton" onClick={newNoteHandler} tabIndex={2}>
+        <img src="new.svg" alt="Create a new Note" />
+      </button>
     </div>
   );
 }
