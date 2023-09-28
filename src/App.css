@@ -92,10 +92,19 @@ body {
 .newNoteButton {
     height: 24px;
     width: 24px;
-    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
 }
 
-.newNoteButton:focus {
+.newNoteButton img {
+    height: 24px;
+    width: 24px;
+}
+
+.newNoteButton:focus img {
     outline: none;
     filter: brightness(50%);
 }
